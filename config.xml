@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<!-- https://build.phonegap.com/docs/config-xml -->
+<widget xmlns = "http://www.w3.org/ns/widgets"
+    xmlns:gap = "http://phonegap.com/ns/1.0"
+    id        = "com.irauldf.example"
+    versionCode="10"
+    version   = "1.0.0">
+  <!-- versionCode is optional and Android only -->
+  <name>iRaulDF Example</name>
+  <description>
+    Aplicaci󮠤e prueba
+  </description>
+  <author href="https://facebook.com/irauldf" email="rdelgado1101@gmail.com">
+    Ra򬠄elgado
+  </author>
+  <preference name="phonegap-version" value="2.9.0" />
+  <preference name="target-device" value="universal" />
+  <!-- oculta la barra de estado -->
+  <preference name="fullscreen" value="false" />
+  <!-- controls whether the screen "bounces" when scrolled beyond the top or bottom on iOS. By default, the bounce is on -->
+  <preference name="webviewbounce" value="false" />
+  <!-- le agrega el efecto en el dise񯠤el icono-->
+  <preference name="prerendered-icon" value="true" />
+
+  <icon src="icons/ios/ico57.png" gap:platform="ios" width="57" height="57" />
+  <icon src="icons/ios/ico72.png" gap:platform="ios" width="72" height="72" />
+  <icon src="icons/ios/ico114.png" gap:platform="ios" width="114" height="114" />
+
+  <!-- retina iPad support: PhoneGap 2.5.0+ only -->
+  <icon src="icons/ios/ico144.png" gap:platform="ios" width="144" height="144" />
+
+  <gap:splash src="splash/ios/intilogo.png" gap:platform="ios" width="556" height="249" />
+</widget>
