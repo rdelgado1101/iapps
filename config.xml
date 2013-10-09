@@ -14,21 +14,28 @@
   </author>
 
   <icon src="icon.png" />
+  <preference name="ios-statusbarstyle" value="black-opaque" />
+  <!-- le agrega el efecto en el diseno del icono-->
+  <preference name="prerendered-icon" value="true" />
   <!--<icon src="icons/ios/icon57.png" gap:platform="ios" width="57" height="57" />
   <icon src="icons/ios/icon72.png" gap:platform="ios" width="72" height="72" />
   <icon src="icons/ios/icon114.png" gap:platform="ios" width="114" height="114" /> 
   <icon src="icons/ios/icon144.png" gap:platform="ios" width="144" height="144" />-->
 
-  <gap:splash src="splash.png" />
-  
-  <!--<gap:splash src="splash/ios/intilogo.png" gap:platform="ios" width="640" height="960" />-->
+  <!--<gap:splash src="splash.png" />-->
+  <gap:splash src="splash/ios/intilogo.png" gap:platform="ios" width="320" height="480"/>
 
+  <feature name="http://api.phonegap.com/1.0/camera"/>
+  <feature name="http://api.phonegap.com/1.0/contacts"/>
+  <feature name="http://api.phonegap.com/1.0/file"/>
+  <feature name="http://api.phonegap.com/1.0/geolocation"/>
+  <feature name="http://api.phonegap.com/1.0/network"/>
+  <feature name="http://api.phonegap.com/1.0/notification"/>
+  
   <preference name="phonegap-version" value="2.9.0" />
   <preference name="target-device" value="universal" />
   <!-- oculta la barra de estado -->
-  <preference name="fullscreen" value="false" />
+  <preference name="fullscreen" value="true" />
   <!-- controls whether the screen "bounces" when scrolled beyond the top or bottom on iOS. By default, the bounce is on -->
   <preference name="webviewbounce" value="false" />
-  <!-- le agrega el efecto en el dise񯠤el icono-->
-  <preference name="prerendered-icon" value="true" />
 </widget>
