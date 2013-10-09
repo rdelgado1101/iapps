@@ -36,5 +36,5 @@
   <!-- oculta la barra de estado -->
   <preference name="fullscreen" value="true" />
   <!-- controls whether the screen "bounces" when scrolled beyond the top or bottom on iOS. By default, the bounce is on -->
-  <preference name="webviewbounce" value="false" />
+  <preference name="webviewbounce" value="true" />
 </widget>

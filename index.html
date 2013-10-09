@@ -81,5 +81,55 @@
         <!-- *********************************************************
        	         LOGIN PAGE END
         ********************************************************* -->
+
+
+        <!-- Javascripts is down of the page for fast open -->
+        <script src="assets/js/vendor/modernizr-2.6.1.min.js"></script>
+        <script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+        <script src="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.js"></script>
+        <script src="assets/js/vendor/zepto.min.js"></script>
+        <script src="assets/js/helper.js"></script>
+		<script src="assets/js/custom.js"></script>
+        <script src="assets/js/add2home.js" charset="utf-8"></script><!-- Iphone Bubble  -->
+        
+   		<!--  Photo Swipe Gallery  -->
+		<script src="assets/js/klass.min.js"></script>
+        <script src="assets/js/photoswipe.js"></script>
+        <!--  Photo Swipe Gallery End -->
+        
+        <!--  Photo Swipe Gallery Custom JS  -->
+        <script type="text/javascript">
+            $(document).ready(function () {
+                var myPhotoSwipe = $("#Gallery a").photoSwipe({ enableMouseWheel: false, enableKeyboard: false });
+            });
+        </script>
+        
+        <!--  Photo Swipe Gallery Custom JS End-->
+        
+        <!-- Slider -->
+        <script src="assets/js/jquery.flexslider.js"></script>
+        <script>
+            $(document).ready(function () {
+                $('.flexslider').flexslider({
+                    slideDirection: "vertical",
+                    animation: "slide",
+                    start: function (slider) {
+                        $('.flexslider').css("max-height", "574px");
+                    }
+                });
+            });
+        </script>
+        <!-- / Slider -->
+
+        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. ( Optional ) -->
+        <script>
+            var _gaq = [["_setAccount", "UA-XXXXX-X"], ["_trackPageview"]];
+            (function (d, t) {
+                var g = d.createElement(t), s = d.getElementsByTagName(t)[0]; g.async = 1;
+                g.src = ("https:" == location.protocol ? "//ssl" : "//www") + ".google-analytics.com/ga.js";
+                s.parentNode.insertBefore(g, s)
+            } (document, "script"));
+        </script>
+        <!-- Google End -->
 </body>
 </html>
