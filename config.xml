@@ -22,8 +22,7 @@
   <icon src="icons/ios/icon114.png" gap:platform="ios" width="114" height="114" /> 
   <icon src="icons/ios/icon144.png" gap:platform="ios" width="144" height="144" />-->
 
-  <!--<gap:splash src="splash.png" />-->
-  <gap:splash src="splash/ios/intilogo.png" gap:platform="ios" width="320" height="480"/>
+    <gap:splash src="splash/ios/intilogo.png" gap:platform="ios" width="320" height="280"/>
 
   <feature name="http://api.phonegap.com/1.0/camera"/>
   <feature name="http://api.phonegap.com/1.0/contacts"/>
