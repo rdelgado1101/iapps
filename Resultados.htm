@@ -1,0 +1,121 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script language="javascript">
+        var WSResult; var header; var selectedFlight;
+
+        $(document).ready(function () {
+            var query = window.location.search.replace("?", "");
+            var request = {};
+
+            request.Origin = query.split("&")[0].split("=")[1];
+            request.Destiny = query.split("&")[2].split("=")[1];
+            request.NumAdt = "1";
+            request.DepartureDate = query.split("&")[1].split("=")[1];
+            request.ArrivalDate = query.split("&")[3].split("=")[1];
+            request.NumAlternatives = "4";
+
+            $.ajax({
+                type: "POST",
+                url: "Service.asmx/retrieveFlightAvailability",
+                data: "{oBEPSRequest:" + JSON.stringify(request) + "}",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (data) {
+                    var $lsResults = $('#lsResults');
+                    $lsResults.empty();
+
+                    var obj = jQuery.parseJSON(data.d);
+                    WSResult = obj;
+
+                    $(obj).each(function (index, item) {
+                        $lsResults.append('<li><a onclick="selectFlight(' + item.lobeFlight[0].ID + ')">' +
+                                    '<img src="imgs/aerolineas/' + item.lobeFlight[0].Airline + '.jpg" />' +
+                                    '<h3>Precio : $' + item.lobePrice.TotalFare + '</h3>' +
+                                    '<p>Nro. Vuelo : ' + item.lobeFlight[0].FlightNumber + '<br />' +
+                                    'Fecha Salida : ' + item.lobeFlight[0].DepartureDay + item.lobeFlight[0].DepartureMonth + '<br />' +
+                                    'Ruta: ' + item.lobeFlight[0].Origin + '-' + item.lobeFlight[0].Destiny + '</p>' +
+                                    '</a></li>');
+                    });
+                    $lsResults.listview('refresh');
+                },
+                error: function () { alert("u suck"); }
+            });
+        });
+
+        function selectFlight(id) {
+            selectedFlight = WSResult[id - 1];
+            $.mobile.changePage($("#bookFlight"), "slide", true, true);
+        }
+
+        $(document).on('pageinit', '#bookFlight', function () {
+            $('.ui-title').text(header);
+        });
+
+
+
+        function bookFlight() {
+            var segmentos = selectedFlight.lobeFlight;
+
+            var pnr = {
+                Seats: "1",
+                Phone: $('[name=tl]').val(),
+                Aian: "9999911111",
+                Email: $('[name=em]').val(),
+                loItinerary: [],
+                loPassengers: []
+            };
+
+            pnr.loPassengers.push({
+                "PaxName": $('[name=ap]').val() + '/' + $('[name=nm]').val(),
+                "PassengerType": "ADT",
+                "Document": $('[name=nd]').val(),
+                "DOB": "1998",
+                "Gender": "M",
+                "DocumentType": $('[name=dc]').val()
+            });
+
+            $(segmentos).each(function (index, item) {
+                pnr.loItinerary.push({
+                    "Airline": item.Airline,
+                    "ArrivalDate": item.DepartureDay + item.DepartureMonth,
+                    "ArrivalTime": item.ArrivalHour + item.ArrivalMinute,
+                    "BoardPoint": item.Origin,
+                    "Classes": item.ClassService,
+                    "CodeShare": "",
+                    "DepartureDate": item.DepartureDay + item.DepartureMonth,
+                    "DepartureTime": item.DepartureHour + item.DepartureMinute,
+                    "FlightNum": item.FlightNumber,
+                    "OffPoint": item.Destiny
+                });
+                console.log(pnr);
+            });
+
+            $.ajax({
+                type: "POST",
+                url: "Service.asmx/bookFlight",
+                data: "{oBEPnr:" + JSON.stringify(pnr) + "}",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (data) {
+                    console.log(data);
+                    var pnr = data.d;
+                    var $pnrloc = $('#pnrloc');
+                    $pnrloc.empty();
+
+                    $pnrloc.append('<label for="basic">Cógido de reserva: </label>');
+                    $pnrloc.append('<label for="basic"><strong>' + pnr + '</strong></label>');
+                },
+                error: function () { alert("ur booking sucks "); }
+            });
+
+            $.mobile.changePage($("#bookResult"), "slide", true, true);
+        }
+ </script>
+</head>
+<body>
+
+</body>
+</html>

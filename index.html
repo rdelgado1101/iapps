@@ -1,135 +1,563 @@
-﻿<!DOCTYPE html>
-
+<!DOCTYPE html>
 <html>
 <head>
-        <meta charset="utf-8">
-        <title>iSolutions Flight Engine</title>
-        <meta name="description" content="">
-        
-        <!-- Mobile Tags -->
-        <meta content="initial-scale=1.0, user-scalable=no" name="viewport">
-        <meta name="apple-mobile-web-app-status-bar-style" content="black" />	
-        <meta name="apple-mobile-web-app-capable" content="yes">
-        
-		<!-- You can put your own logo below linking photos for splash screen-->
-        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/images/touch/apple-touch-icon-144x144-precomposed.png">
-        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/images/touch/apple-touch-icon-114x114-precomposed.png">
-        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/images/touch/apple-touch-icon-72x72-precomposed.png">
-        <link rel="apple-touch-icon-precomposed" href="assets/images/touch/apple-touch-icon-57x57-precomposed.png">
-        <link rel="shortcut icon" href="assets/images/touch/apple-touch-icon.png">
-		<!-- / Mobile Tags -->
-        
-        <!-- Splash screens -->
-        <!-- iPhone 320x460 -->
-        <link href="assets/images/splashscreens/apple-touch-startup-image-320x460.png" media="(device-width: 320px) and (device-height: 480px) and (-webkit-device-pixel-ratio: 1)" rel="apple-touch-startup-image">
-        <!-- iPhone (Retina) 640x920 -->
-        <link href="assets/images/splashscreens/apple-touch-startup-image-640x920.png" media="(device-width: 320px) and (device-height: 480px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image">
-        <!-- iPhone 5 640x1096-->
-        <link href="assets/images/splashscreens/apple-touch-startup-image-640x1096.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image">
-        <!-- iPad 768x1004 / 748x1024-->
-        <link href="assets/images/splashscreens/apple-touch-startup-image-768x1004.png" media="(device-width: 768px) and (device-height: 1024px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 1)" rel="apple-touch-startup-image">
-        <link href="assets/images/splashscreens/apple-touch-startup-image-748x1024.png" media="(device-width: 768px) and (device-height: 1024px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 1)" rel="apple-touch-startup-image">
-        <!-- iPad (Retina) 1536x2008 / 1496x2048 -->
-        <link href="assets/images/splashscreens/apple-touch-startup-image-1536x2008.png" media="(device-width: 768px) and (device-height: 1024px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image">
-        <link href="assets/images/splashscreens/apple-touch-startup-image-1496x2048.png" media="(device-width: 768px) and (device-height: 1024px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image">
-  	<!-- / Splash Screens -->
-        
-        
-        <!-- CSS Files -->
-        <link rel="stylesheet" href="assets/css/jquery.mobile.structure-1.0.1.min.css" type="text/css">
-        <link rel="stylesheet" href="assets/css/jquery.mobile.1.0.1.min.css" />
-        <link rel="stylesheet" href="assets/css/add2home.css"><!-- Iphone Bubble  -->
-        <link rel="stylesheet" href="assets/css/icons/icons.css" type="text/css" >
-        <link rel="stylesheet" href="assets/css/icons/nav-icons.css" type="text/css" >
-		<link rel="stylesheet" href="assets/css/flexslider.css" type="text/css" media="screen" />
-		<link rel="stylesheet" href="assets/css/style.css" type="text/css" > <!-- Theme Style Sheet File -->
-        <link rel="stylesheet" href="assets/css/normalize.css">
-        <link rel="stylesheet" href="assets/css/main.css">
-		<link rel="stylesheet" href="assets/css/photoswipe.css">
+    <meta charset="utf-8">
+    <title>Medicall Mobile</title>
+    <!-- JS Files -->
+    <script type="text/javascript" src="phonegap.js"></script>
+    <script type="text/javascript" src="PushNotification.js"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=true"></script>
+    <script type="text/javascript" src="js/jquery-1.6.4.min.js"></script>
+    <script src="js/jquery.mobile-1.0.1.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="js/custom.js"></script>
+    <script type="text/javascript" src="js/fastclick.js"></script>
+    <!-- <script type="text/javascript" src="js/cordova-2.9.0.js"></script> -->
+    <script src="js/custom.js"></script>
+    <!-- Hoja JS con scripts personalizados -->
+    <script src="js/medicall.js"></script>
+    <!-- CSS Files -->
+    <link rel="stylesheet" type="text/css" href="css/jquery.mobile.1.0.1.min.css"> 
+    <link rel="stylesheet" type="text/css" href="css/jquery.mobile.structure-1.0.1.min.css">
 
-        <link rel="stylesheet" type="text/css" href="assets/css/icons/nav-icons-black.css"> 
-        <!-- / CSS Files -->
-        
-        <!-- This script prevents links from opening in Mobile Safari. https://gist.github.com/1042026 -->
-        
+    <link rel="stylesheet" type="text/css" href="css/ic ons.css">
+    <link rel="stylesheet" type="text/css" href="css/nav-icons.css">
+    <link rel="stylesheet" type="text/css" href="css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script type="text/javascript">
+        app.initialize();
+    </script>
+
+    <script>
+        function pork() {
+            $.mobile.changePage($("#resultados"), "slide", true, true);
+        }
+        function selectFlight(id) {
+            $.mobile.changePage($("#bookFlight"), "slide", true, true);
+        }
+        function getmenu() {
+            $.mobile.changePage($("#home"), "fade", true, true);
+        }
+    </script>
 </head>
 <body>
-        <!-- *********************************************************
-       	        LOGIN PAGE BEGIN
-        ********************************************************* -->
-        <div data-role="page" class="pages" id="login" data-theme="a">
-            <!-- Content Begin -->
-            <div data-role="content">
-                <div class="flex-container">
-                    <img src="assets/images/inlogo.png" alt="" /><br />
-                    Login :<input type="text" />
-                    Password :<input type="password" />
-                    <input type="button" value="Ingresar" />
+    <!-- Menu Begin -->
+    <!--div id="menu" style="display: none">-->
+    <div id="menu">
+        <!-- Social Links -->
+        <div class="social-links">
+            <p><a class="twitter" href="http://twitter.com/INTISAC"></a></p>
+            <p><a class="rss" href="#"></a></p>
+            <p><a class="facebook" href="https://www.facebook.com/IntiSolutionsSac"></a></p>
+            <p><a class="googleplus" href="https://plus.google.com/u/1/115584825717590590904/"></a></p>
+            <p><a class="linkedin" href="#"></a></p>
+        </div>
+        <!-- / social links -->
+        <div class="hr-full-black"></div>
+        <ul>
+            <li><a href="#home" class="contentLink" data-transition="fade">Inicio <span class="icon"></span></a></li>
+            <li><a href="#misreservas" class="contentLink" data-transition="fade">Mis Reservas<span class="icon"></span></a></li>
+            <!--<li><a href="#instructions" class="contentLink" data-transition="fade">Instrucciones<span class="icon"></span></a></li>-->
+            <li><a href="#" class="contentLink" data-transition="fade" onclick="window.open('http://intisolutionsdev.com/dirbeta2/Promociones.aspx', '_blank');">Promociones<span class="icon"></span></a></li>
+			<li><a href="#oficinas" class="contentLink" data-transition="fade">Oficinas<span class="icon"></span></a></li>            
+            <li><a href="#login" class="contentLink" data-transition="fade">Cerrar sesi&oacute;n<span class="icon"></span></a></li>
+        </ul>
+    </div>
+    <!-- /Menu -->
+    <!-- *********************************************************
+       	 COMIENZO DE LA PAGINA DE LOGIN
+         ********************************************************* -->
+    <div data-role="page" class="pages" id="login" data-theme="a">
+        <div data-role="header" class="header" data-theme="a">
+            <div class="logo">
+            </div>
+        </div>
+        <div data-role="content">
+            <div class="loginarea">
+                <div class="login-header">
+                    INICIAR SESI&Oacute;N
                 </div>
+                <div class="login-sub">
+                    <div class="csubtitle">
+                        Usuario:</div>
+                    <div class="csubinfo">
+                        <input type="text" id="txtLoginUser" maxlength="50"></div>
+                </div>
+                <div class="login-sub">
+                    <div class="csubtitle">
+                        Contraseña:</div>
+                    <div class="csubinfo">
+                        <input type="password" id="txtLoginPassword" maxlength="50"></div>
+                </div>
+            </div>
+            <div class="clear">
+            </div>
+            <div>
+                <input type="button" value="Iniciar sesi&oacute;n" onclick="getmenu()" />
+            </div>
+            <div id="lblLoginMessage" class="error" style="display: none;">
+            </div>
+            <div class="text-box-area">
+                <p class="info">
+                    Si no posee una cuenta para ingresar al aplicativo,
+                    por favor, proceda a registrarse en nuestro sitio web: <a href="#" onclick="window.open('http://www.medicallperu.com', '_blank', 'location=yes');">
+                        www.medicallperu.com</a>. Adicionalmente, si olvid&oacute; su contraseña, tambi&eacute;n
+                    puede recuperarla en nuestra p&aacute;gina.
+                </p>
+            </div>
+        </div>
+    </div>
+    <!-- *********************************************************
+       	 FINALIZACION DE LA PAGINA DE LOGIN
+         ********************************************************* -->
+    <!-- *********************************************************
+       	 COMIENZO DE LA PAGINA DE INICIO
+         ********************************************************* -->
+    <div data-role="page" class="pages" id="home" data-theme="a">
+        <!-- Header Begin -->
+        <div data-role="header" class="header" data-theme="a">
+            <a href="#" class="showMenu menuBtn">Menu</a>
+            <div class="logo">
+                &nbsp;
+            </div>
+        </div>
+        <!-- / header -->
+        <!-- breadcrumb -->
+        <ul class="breadcrumb">
+            <li><a href="#home">
+                <div class="homeicon">
+                </div>
+            </a></li>
+            <li><a href="#" title="Inicio">Inicio</a></li>
+        </ul>
+        <!-- / breadcrumb-->
+        <!-- Content Begin -->
+        <div data-role="content">
+            <!-- Text Area -->
+            <div class="text-box-area">
+                <p>Motor de búsqueda.</p>
+            </div>
+            <div data-role="content">
+                <div>
+                    <div data-role="fieldcontain">
+                        <label for="basic">Origen:</label>
+                        <input type="text" name="or"  id="basic" placeholder="Origen" data-mini="true" />
+                    </div>
+                    <div data-role="fieldcontain">
+                        <label for="basic">Fecha Salida:</label>
+                        <input type="date" name="fs" id="Text1" placeholder="Fecha Salida" data-mini="true" />
+                    </div>
+                    <div data-role="fieldcontain">
+                        <label for="basic">Destino:</label>
+                        <input type="text" name="ds" id="Text2" placeholder="Destino" data-mini="true" />
+			        </div>
+                    <div data-role="fieldcontain">
+                        <label for="basic">Fecha Retorno:</label>
+                        <input type="date" name="fr" id="Text3" placeholder="Fecha Retorno" data-mini="true" />
+			        </div>
+                    <button onclick="pork()" type="submit" data-theme="b" name="submit" value="Buscar">Buscar</button>
+                </div>
+            </div>
+            <!-- / Text Area -->
+        </div>
+        <!-- / content -->
+    </div>
+    <!-- *********************************************************
+       	 FINALIZACION DE LA PAGINA DE INICIO 
+         ********************************************************* -->
+
+    <!-- *********************************************************
+          COMIENZO DE LA PAGINA DE RESULTADO DE VUELOS --
+         ********************************************************* -->
+         
+        <div data-role="page" class="pages" id="resultados" data-theme="a">
+            <div data-role="header" class="header" data-theme="a">
+                <a href="#" class="showMenu menuBtn">Menu</a>
+                <div class="logo">
+                    &nbsp;
+                </div>
+            </div>
+            <ul class="breadcrumb">
+                <li><a href="#home"><div class="homeicon"></div></a></li>
+                <li><a href="#home" title="Inicio">Inicio</a></li>
+            </ul>
+            <div data-role="content">
                 <div class="text-box-area">
-                    <div class="text-info">
+                    <p>Resultados de la búsqueda. Seleccione cualquier ítem del detalle que desee reservar.</p>
+                </div>
+                <div data-role="content">
+                    <div data-role="collapsible-set">
+                        <div data-role="collapsible">
+                            <h3>Lan Perú - LIM TRU - $200.00</h3>
+                            <a onclick="selectFlight(0)">
+                                <ul id="lsResults" data-role="listview" data-inset="true" data-filter="false">
+                                    <li><img src="images/aerolineas/LP.jpg" style="padding-top:25px" /><p>Nro. Vuelo : 202<br />Fecha Salida : 16MAY<br /> Ruta: TRU LIM </p></li>>
+                                    <li><img src="images/aerolineas/LP.jpg" style="padding-top:25px" /><p>Nro. Vuelo : 202<br />Fecha Salida : 25MAY<br /> Ruta: LIM AQP</p></li>
+                                    <li><img src="images/aerolineas/LP.jpg" style="padding-top:25px" /><p>Nro. Vuelo : 202<br />Fecha Salida : 23MAY<br /> Ruta: AQP LIM</p></li>
+			                    </ul>
+                            </a>
+                        </div>
+                    </div>
+                    <div data-role="collapsible-set">
+                        <div data-role="collapsible">
+                            <h3>Lan Perú - LIM TRU - $600.00</h3>
+                            <a onclick="selectFlight(0)">
+                                <ul id="Ul1" data-role="listview" data-inset="true" data-filter="false">
+                                    <li><img src="images/aerolineas/AC.jpg" style="padding-top:25px" /><p>Nro. Vuelo : 202<br />Fecha Salida : 16MAY<br /> Ruta: TRU LIM </p></li>
+                                    <li><img src="images/aerolineas/AR.jpg" style="padding-top:25px" /><p>Nro. Vuelo : 202<br />Fecha Salida : 25MAY<br /> Ruta: LIM AQP</p></li>
+                                    <li><img src="images/aerolineas/LX.jpg" style="padding-top:25px" /><p>Nro. Vuelo : 202<br />Fecha Salida : 23MAY<br /> Ruta: AQP LIM</p></li>
+			                    </ul>
+                            </a>
+                        </div>
+                    </div>
+                    <div data-role="collapsible-set">
+                        <div data-role="collapsible">
+                            <h3>Lan Perú - LIM TRU - $400.00</h3>
+                            <a onclick="selectFlight(0)">
+                                <ul id="Ul2" data-role="listview" data-inset="true" data-filter="false">
+                                    <li><img src="images/aerolineas/S3.jpg" style="padding-top:25px" /><p>Nro. Vuelo : 202<br />Fecha Salida : 16MAY<br /> Ruta: TRU LIM </p></li>
+                                    <li><img src="images/aerolineas/TA.jpg" style="padding-top:25px" /><p>Nro. Vuelo : 202<br />Fecha Salida : 25MAY<br /> Ruta: LIM AQP</p></li>
+                                    <li><img src="images/aerolineas/AA.jpg" style="padding-top:25px" /><p>Nro. Vuelo : 202<br />Fecha Salida : 23MAY<br /> Ruta: AQP LIM</p></li>
+			                    </ul>
+                            </a>
+                        </div>
+                    </div>
+	            </div><!-- /content -->
+            </div>
+        </div>
+
+        <div data-role="page" id="bookFlight">
+            <div data-role="header" class="header" data-theme="a">
+                <a href="#" class="showMenu menuBtn">Menu</a>
+                <div class="logo">
+                    &nbsp;
+                </div>
+            </div>
+            <ul class="breadcrumb">
+                <li><a href="#home"><div class="homeicon"></div></a></li>
+                <li><a href="#home" title="Inicio">Inicio</a></li>
+                <li><a href="#resultados" title="Inicio">Resultados</a></li>
+            </ul>
+            <form>
+                <div data-role="content">
+                    <div data-role="fieldcontain">
+                        <label for="basic">Nombre:</label>
+                        <input type="text" name="nm" id="Text4" value="" data-mini="true" />
+                    </div>
+                    <div data-role="fieldcontain">
+                        <label for="basic">Apellido:</label>
+                        <input type="text" name="ap" id="Text5" value="" data-mini="true" />            
+			        </div>
+                    <div data-role="fieldcontain">    
+                        <label for="basic">Teléfono:</label>
+                        <input type="tel" name="tl" id="Text6" value="" data-mini="true" />            
+			        </div>
+                    <div data-role="fieldcontain">    
+                        <label for="basic">Email:</label>
+                        <input type="email" name="em" id="Text7" value="" data-mini="true" />            
+			        </div>
+                    <div data-role="fieldcontain">    
+                        <label for="basic">T. Documento:</label>
+                        <select name="dc" id="select-choice-a">
+				            <option value="D">DNI</option>
+				            <option value="P">Pasaporte</option>
+			            </select>
+			        </div>
+                    <div data-role="fieldcontain">    
+                        <label for="basic">Nro. Documento:</label>
+                        <input type="text" name="nd" id="Text8" value="" data-mini="true" />            
+			        </div>
+                    <a onclick="bookFlight()" data-theme="b" data-role="button">Reservar</a>
+                </div>
+            </form>
+        </div>
+
+    <div data-role="page" class="pages" id="misreservas" data-theme="a">
+        <div data-role="header" class="header" data-theme="a">
+            <a href="#" class="showMenu menuBtn">Menu</a>
+            <div class="logo">&nbsp;</div>
+        </div>
+        <!-- / header -->
+        <!-- breadcrumb -->
+        <ul class="breadcrumb">
+            <li><a href="#home"><div class="homeicon"></div></a></li>
+            <li><a href="#home" title="Inicio">Inicio</a></li>
+            <li><a href="#resultados" title="Inicio">Mis Reservas</a></li>
+        </ul>
+        <div data-role="content">
+            <div id="pork" class="ui-grid-a ui-responsive">
+                <div class="ui-block-a"><div class="ui-body ui-body-d">PNR</div></div>
+                <div class="ui-block-b"><div class="ui-body ui-body-d" style="width: 50px">Ver</div></div>
+
+                <div class="ui-block-a"><div class="ui-body ui-body-d"><br />PNRTST</div></div>
+                <div class="ui-block-b"><div class="ui-body ui-body-d" style="width: 50px">
+                <a href="#"><img width="48px" height="34px" src="images/icons/black/Idcard.png"/></a></div></div>
+            </div>
+        </div>
+    </div>
+    <!-- *********************************************************
+       	 COMIENZO DE LA PAGINA DE INSTRUCCIONES
+         ********************************************************* -->
+    <div data-role="page" class="pages" id="instructions" data-theme="a">
+        <!-- Header Begin -->
+        <div data-role="header" class="header" data-theme="a">
+            <a href="#" class="showMenu menuBtn">Menu</a>
+            <div class="logo">
+                &nbsp;
+            </div>
+        </div>
+        <!-- / header -->
+        <!-- breadcrumb -->
+        <ul class="breadcrumb">
+            <li><a href="#home">
+                <div class="homeicon">
+                </div>
+            </a></li>
+            <li><a href="#" title="Instrucciones">Instrucciones</a></li>
+        </ul>
+        <!-- / breadcrumb-->
+        <!-- Content Begin -->
+        <div data-role="content">
+            <!-- Text Area -->
+            <div class="text-box-area">
+                <p>
+                    En esta secci&oacute;n encontrar&aacute; informaci&oacute;n &uacute;til para utilizar
+                    correctamente las caracter&iacute;sticas de Medicall ME.
+                </p>
+            </div>
+            <!-- / Text Area -->
+            <!-- Collapsed Area -->
+            <div data-role="collapsible-set">
+                <div data-role="collapsible">
+                    <h3>
+                        Manejo de perfil</h3>
                     <p>
-                        <strong>Debe iniciar sesión para acceder al contenido de viajes</strong><br/>
+                        <strong>Manejo de perfil</strong><br />
+                        Para editar su perfil dir&iacute;jase a <a href="#" onclick="window.open('http://www.medicallperu.com', '_blank', 'location=yes');">
+                            www.medicallperu.com</a>.
                     </p>
+                </div>
+                <div data-role="collapsible" data-collapsed="true">
+                    <h3>
+                        Manejo de disponibilidad</h3>
+                    <p>
+                        Existen cuatro tipos de estado entre los cuales usted podr&aacute; escoger:<br />
+                    </p>
+                    <ul class="checklist">
+                        <li>Disponible para realizar visitas a domicilio.</li>
+                        <li>Disponible para ser visitado.</li>
+                        <li>Disponibilidad total</li>
+                        <li>No disponible</li>
+                    </ul>
+                </div>
+                <div data-role="collapsible" data-collapsed="true">
+                    <h3>Manejo de notificaciones</h3>
+                    <p>
+                        Las notificaciones representan solicitudes de contacto de los usuarios. Cuando un
+                        usuario quiera contactarlo a trav&eacute;s del sitio web .
+                    </p>
+                </div>
+            </div>
+            <!-- / Collapsed Area -->
+        </div>
+    </div>
+    <!-- *********************************************************
+       	 FINALIZACION DE LA PAGINA DE INSTRUCCIONES
+         ********************************************************* -->
+    <!-- *********************************************************
+       	 COMIENZO DE LA PAGINA DE UBICACION
+         ********************************************************* -->
+    <div data-role="page" class="pages" id="oficinas" data-theme="a">
+        <!-- Header Begin -->
+        <div data-role="header" class="header" data-theme="a">
+            <a href="#" class="showMenu menuBtn">Menu</a>
+            <div class="logo">&nbsp;</div>
+        </div>
+        <!-- / header -->
+        <!-- breadcrumb -->
+        <ul class="breadcrumb">
+            <li><a href="#home"><div class="homeicon"></div></a></li>
+            <li><a href="#" title="Oficinas">Oficinas cercanas</a></li>
+        </ul>
+        <!-- / breadcrumb-->
+        <!-- Content Begin -->
+        <div data-role="content">
+            <div id="divMap" class="divMap">
+                <img src="#" id="imgGooglemap" />
+            </div>
+            <div id="lblAvailabilityMessage" class="warning" style="display: none">
+                <p>Lo hemos ubicado en: <strong><span id="Location"></span></strong>.</p>
+            </div>
+            <!-- / content -->
+        </div>
+    </div>
+    <!-- *********************************************************
+       	 FINALIZACION  DE LA PAGINA DE UBICACION
+         ********************************************************* -->
+    <!-- *********************************************************
+       	 COMIENZO DE LA PAGINA DE NOTIFICACIONES
+         ********************************************************* -->
+    <div data-role="page" class="pages" id="notifications" data-theme="a">
+        <!-- Header Begin -->
+        <div data-role="header" class="header" data-theme="a">
+            <a href="#" class="showMenu menuBtn">Menu</a>
+            <div class="logo">
+                &nbsp;
+            </div>
+        </div>
+        <!-- / header -->
+        <!-- breadcrumb -->
+        <ul class="breadcrumb">
+            <li><a href="#home">
+                <div class="homeicon">
+                </div>
+            </a></li>
+            <li><a href="#" title="Últimas notificaciones">&Uacute;ltimas notificaciones</a></li>
+        </ul>
+        <!-- / breadcrumb-->
+        <!-- Content Begin -->
+        <div data-role="content">
+            <!-- Text Area -->
+            <p>
+                Aquí podrá ver las notificaciones de contacto enviadas por los usuarios registrados
+                en el sitio web. Haciendo click en el botón de "Ver contacto" de cada fila, usted
+                podrá acceder a la información del usuario, llamarlo, enviarle un correo, entre
+                otras actividades.
+            </p>
+            <p>
+                <strong>* Las alertas tienen una vigencia de tres horas; al acabar dicho periodo, ser&aacute;n
+                    eliminadas del sistema.</strong>
+            </p>
+            <br />
+            <!-- / Text Area -->
+            <div id="divAlerts" class="ui-grid-a ui-responsive">
+            </div>
+        </div>
+        <!-- / content -->
+    </div>
+    <!-- *********************************************************
+       	 FINALIZACIÓN DE LA PAGINA DE NOTIFICACIONES
+         ********************************************************* -->
+    <!-- *********************************************************
+         COMIENZO DE LA PAGINA DE CONTACTO
+        ********************************************************* -->
+    <div data-role="page" class="pages" id="contact" data-theme="a">
+        <!--header-->
+        <div data-role="header" class="header" data-theme="a">
+            <a href="#" class="showMenu menuBtn">Menu</a>
+            <div class="logo">
+                &nbsp;</div>
+        </div>
+        <!-- /header -->
+        <!-- breadcrumb -->
+        <ul class="breadcrumb">
+            <li><a href="#home"><div class="homeicon"></div></a></li>
+            <li><a href="#notifications" title="Notificaciones">Notificaciones</a></li>
+            <li><a href="#" title="Contacto">Detalle</a></li>
+        </ul>
+        <!-- / breadcrumb-->
+        <!-- Content -->
+        <div data-role="content">
+            <!-- Container -->
+            <div class="contactarea">
+                <div class="contact-header">
+                    Informaci&oacute;n de contacto</div>
+                <div class="contact-sub">
+                    <div class="csubtitle">
+                        Nombre completo:</div>
+                    <div class="csubinfo">
+                        <span id="Name"></span>
                     </div>
                 </div>
-                <!-- / Text Area -->
-          		<div class="clearfix"></div>
+                <div class="contact-sub">
+                    <div class="csubtitle">
+                        Apellido paterno:</div>
+                    <div class="csubinfo">
+                        <span id="LastName"></span>
+                    </div>
+                </div>
+                <div class="contact-sub">
+                    <div class="csubtitle">
+                        Apellido materno:</div>
+                    <div class="csubinfo">
+                        <span id="SecondLastName"></span>
+                    </div>
+                </div>
+                <div class="contact-sub">
+                    <div class="csubtitle">
+                        Direcci&oacute;n</div>
+                    <div class="csubinfo">
+                        <span id="Address"></span>
+                    </div>
+                </div>
+                <div class="contact-sub">
+                    <div class="csubtitle">
+                        Comentarios</div>
+                    <div class="csubinfo">
+                        <span id="Comments"></span>
+                    </div>
+                </div>
             </div>
-            <!-- /content -->
+            <!-- / Contact Area -->
         </div>
-        <!-- *********************************************************
-       	         LOGIN PAGE END
+        <!-- /content -->
+        <div data-role="footer" class="nav-glyphish" data-position="fixed" data-theme="a">
+            <div data-role="navbar" class="nav-glyphish" data-grid="a">
+                <ul>
+                    <li><a href="" id="btnTelephone" class="iconsub-white-Envelope" data-icon="custom">E-mail</a></li>
+                    <li><a href="" id="btnMail" class="iconsub-white-Phone" data-icon="custom">Llamar</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- *********************************************************
+        FINALIZACIÓN  DE LA PAGINA DE CONTACTO
         ********************************************************* -->
-
-
-        <!-- Javascripts is down of the page for fast open -->
-        <script src="assets/js/vendor/modernizr-2.6.1.min.js"></script>
-        <script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
-        <script src="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.js"></script>
-        <script src="assets/js/vendor/zepto.min.js"></script>
-        <script src="assets/js/helper.js"></script>
-		<script src="assets/js/custom.js"></script>
-        <script src="assets/js/add2home.js" charset="utf-8"></script><!-- Iphone Bubble  -->
-        
-   		<!--  Photo Swipe Gallery  -->
-		<script src="assets/js/klass.min.js"></script>
-        <script src="assets/js/photoswipe.js"></script>
-        <!--  Photo Swipe Gallery End -->
-        
-        <!--  Photo Swipe Gallery Custom JS  -->
-        <script type="text/javascript">
-            $(document).ready(function () {
-                var myPhotoSwipe = $("#Gallery a").photoSwipe({ enableMouseWheel: false, enableKeyboard: false });
-            });
-        </script>
-        
-        <!--  Photo Swipe Gallery Custom JS End-->
-        
-        <!-- Slider -->
-        <script src="assets/js/jquery.flexslider.js"></script>
-        <script>
-            $(document).ready(function () {
-                $('.flexslider').flexslider({
-                    slideDirection: "vertical",
-                    animation: "slide",
-                    start: function (slider) {
-                        $('.flexslider').css("max-height", "574px");
-                    }
-                });
-            });
-        </script>
-        <!-- / Slider -->
-
-        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. ( Optional ) -->
-        <script>
-            var _gaq = [["_setAccount", "UA-XXXXX-X"], ["_trackPageview"]];
-            (function (d, t) {
-                var g = d.createElement(t), s = d.getElementsByTagName(t)[0]; g.async = 1;
-                g.src = ("https:" == location.protocol ? "//ssl" : "//www") + ".google-analytics.com/ga.js";
-                s.parentNode.insertBefore(g, s)
-            } (document, "script"));
-        </script>
-        <!-- Google End -->
+    <!-- *********************************************************
+       	 COMIENZO DE LA PAGINA DE PHOTOUPLOAD
+         ********************************************************* -->
+    <div data-role="page" class="pages" id="medicalhistory" data-theme="a">
+        <!-- Header Begin -->
+        <div data-role="header" class="header" data-theme="a">
+            <a href="#" class="showMenu menuBtn">Menu</a>
+            <div class="logo">
+                &nbsp;
+            </div>
+        </div>
+        <!-- / header -->
+        <!-- breadcrumb -->
+        <ul class="breadcrumb">
+            <li><a href="#home">
+                <div class="homeicon">
+                </div>
+            </a></li>
+            <li><a href="#notifications" title="Notificaciones">Notificaciones</a></li>
+            <li><a href="#contact" title="Contacto">Detalle</a></li>
+            <li><a href="#" title="Registrar HC">Registrar HC</a></li>
+        </ul>
+        <!-- / breadcrumb-->
+        <!-- Content Begin -->
+        <div data-role="content">
+            <!-- Text Area -->
+            <p>
+                Aquí podrá ver las notificaciones de contacto enviadas por los usuarios registrados
+                en el sitio web. Haciendo click en el botón de "Ver contacto" de cada fila, usted
+                podrá acceder a la información del usuario, llamarlo, enviarle un correo, entre
+                otras actividades.
+            </p>
+            <p>
+                <strong>* Las alertas tienen una vigencia de tres horas; al acabar dicho periodo, ser&aacute;n
+                    eliminadas del sistema.</strong>
+            </p>
+            <br />
+            <!-- / Text Area -->
+            <button onclick="app.capturePhoto();">Tomar fotograf&iacute;a</button> <br>
+            <center><img style="display:none;width:80px;height:80px;" id="smallImage" src="" /></center>
+        </div>
+        <!-- / content -->
+    </div>
+    <!-- *********************************************************
+       	 FINALIZACIÓN DE LA PAGINA DE PHOTOUPLOAD
+         ********************************************************* -->
 </body>
 </html>
